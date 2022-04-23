@@ -1,0 +1,38 @@
+
+<h1>{{announcement}}</h1>
+
+<button type="button" class="btn btn-primary" (click)="replyNew = !replyNew">New Reply</button>
+
+
+<div [hidden] = "!replyNew">
+  <input type="text" #f>
+  <button type ="button" (click) = newReply(f)>Reply</button>
+</div>
+
+<div >
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Reply</th>
+            <th scope="col">by</th>
+          </tr>
+        </thead>
+        <tbody >
+
+            <tr *ngFor= "let reply of replies; index as i">
+                <th scope="row">{{i+1}}</th>
+                <td> {{reply.reply}}</td>
+                <td> {{reply.email}}</td>
+                <td *ngIf="reply.isAdmin">Teacher</td>
+                <td *ngIf="!reply.isAdmin">Student</td>
+            </tr>
+        
+        </tbody>
+      </table>
+
+<button type="button" class="btn btn-danger" 
+routerLink="/announcements" [state]="{redirect : redirect}" >Done</button>
+
+</div>

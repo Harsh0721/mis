@@ -1,0 +1,63 @@
+<form #f="ngForm" >
+
+    <div class="imgcontainer">
+      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+  
+    <div class="form-group">
+
+      <label for="userName"><b>Username</b></label>
+      <input 
+      type="text"
+      ngModel name="userName" #userName="ngModel"
+      placeholder="Enter Username" 
+      name="userName" required>
+
+      <div 
+         class="alert alert-danger"
+         *ngIf="!userName.valid && userName.touched">
+        First name is req and must be 5 char Long
+    </div>
+
+      <label for="password"><b>Password</b></label>
+      <input 
+      ngModel name="password" #password="ngModel"
+      type="password" 
+      placeholder="Enter Password" 
+      name="password" 
+      required
+      minlength="5" maxlength="1024">
+
+      <div 
+        class="alert alert-danger"
+        *ngIf="!password.valid && password.touched">
+        Password is req and must be b/w 5-1024 characters long
+    </div> 
+
+    
+
+    <label for="email"><b>Email</b></label>
+
+      <input 
+      ngModel name="email" #email="ngModel"
+      type="email" 
+      placeholder="Enter email" 
+      name="email" 
+      required
+      minlength="5" maxlength="1024" >
+
+      <div
+        class="alert alert-danger"
+        *ngIf="!email.valid && email.touched">
+        Email is req and must be b/w 5-1024 characters long
+    </div> 
+      
+    <button type="submit" (click)="login(f)" active="password.touched && userName.touched && password.valid && userName.valid">Login</button>
+    
+
+</div>
+  
+
+  </form>
+
+  <li *ngFor="let course of post">{{course}}</li>

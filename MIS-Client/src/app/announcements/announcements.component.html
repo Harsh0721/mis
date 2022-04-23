@@ -1,0 +1,41 @@
+
+<div>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Announcement</th>
+            <th scope="col">By</th>
+            <th scope="col">Designation</th>
+          </tr>
+        </thead>
+        <tbody >
+
+            <tr *ngFor= "let announcement of announcements; index as i">
+                <th scope="row">{{i+1}}</th>
+                <td> {{announcement.initial}}</td>
+                <td> {{announcement.email}}</td>
+                <td> {{announcement.isAdmin}}</td>
+
+                <td> 
+                    <button 
+                      type="button" class="btn btn-info"
+                      routerLink="/replies" 
+                      [state]= " 
+                      {reply : announcement.replies, 
+                      redirect : redirect, 
+                      announcement : announcement.initial,
+                      id: announcement._id} ">
+                    
+                        View Replies  </button>
+                  </td>
+            </tr>
+        
+        </tbody>
+      </table>
+
+<button type="button" class="btn btn-danger" (click)="backToPrevious()">Done</button>
+
+
+</div>

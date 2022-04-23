@@ -1,0 +1,35 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student Name</th>
+        </tr>
+    </thead>
+
+        <tbody>
+
+            <tr *ngFor="let student of students; index as i">
+                <td>{{i}}</td>
+                <td> {{student}} </td>
+                <td> 
+                    <button type="button" class="btn btn-info"
+                    (click) = "grade[i]=!grade[i]">
+                        Grade
+                    </button>
+                </td>
+
+                <td *ngIf="grade[i]">
+                    <input type="number" #grade>
+                    <button type="button" class="btn btn-danger"
+                    (click)="updateGrade(grade,student)">Update
+                    </button>
+                </td>
+
+
+            </tr>
+        </tbody>
+    
+</table>
+
+<button type="button" class="btn btn-danger" routerLink="/courses" 
+[state] = " {redirect : redirect, teacher :isTeacher, courses : courses, register: register }">Done</button>

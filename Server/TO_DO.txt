@@ -1,0 +1,1 @@
+1: Add config module in auth.js and replace myPrivateKey JWT as env avriable
